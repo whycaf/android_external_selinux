@@ -92,12 +92,6 @@ cc_defaults {
         }
     },
 
-    product_variables: {
-        treble: {
-            cflags: ["-DFULL_TREBLE"],
-        },
-    },
-
     local_include_dirs: ["include"],
     export_include_dirs: ["include"],
 }
@@ -105,7 +99,12 @@ cc_defaults {
 cc_library {
     name: "libselinux",
     defaults: ["libselinux_defaults"],
+
     vendor_available: true,
+    vndk: {
+        enabled: true,
+    },
+
     host_supported: true,
     cflags: ["-DUSE_PCRE2"],
 
